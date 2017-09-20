@@ -16,7 +16,11 @@ namespace Defuse_IT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new DefuseUI());
+
+            //Init Bot
+            BotController defuseBot = new BotController();
+            defuseBot._start();
         }
     }
 }
