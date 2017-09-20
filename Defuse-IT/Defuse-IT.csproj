@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BotController.cs" />
+    <Compile Include="BotController\BotController.cs" />
     <Compile Include="DefuseUI.cs">
       <SubType>Form</SubType>
     </Compile>
