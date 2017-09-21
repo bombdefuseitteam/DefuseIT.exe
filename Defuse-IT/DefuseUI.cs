@@ -8,11 +8,16 @@ namespace Defuse_IT
         public DefuseUI()
         {
             InitializeComponent();
+
+
+            WebcamVLC.playlist.add("http://192.168.1.2:8080/video");
+            WebcamVLC.playlist.play();
         }
 
         private void DefuseUI_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }

@@ -20,7 +20,7 @@ namespace Defuse_IT
 
             //Init Bot
             BotController defuseBot = new BotController();
-            defuseBot._start();
+            defuseBot.start();
         }
     }
 }
