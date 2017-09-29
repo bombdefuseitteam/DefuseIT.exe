@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Defuse_IT.XInput;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,9 +20,6 @@ namespace Defuse_IT
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DefuseUI());
 
-            //Init Bot
-            BotController defuseBot = new BotController();
-            defuseBot.start();
         }
     }
 }

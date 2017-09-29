@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefuseUI));
             this.metroUserControl1 = new MetroFramework.Controls.MetroUserControl();
             this.label_version = new MetroFramework.Controls.MetroLabel();
             this.controllerStatusLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.WebcamVLC = new AxAXVLC.AxVLCPlugin2();
-            ((System.ComponentModel.ISupportInitialize)(this.WebcamVLC)).BeginInit();
+            this.robotLabel = new System.Windows.Forms.Label();
+            this.robotStatus = new System.Windows.Forms.Label();
+            this.labelY = new System.Windows.Forms.Label();
+            this.labelX = new System.Windows.Forms.Label();
+            this.webcamStatus = new System.Windows.Forms.Label();
+            this.webcamLabel = new System.Windows.Forms.Label();
+            this.startConnect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // metroUserControl1
             // 
-            this.metroUserControl1.Location = new System.Drawing.Point(160, 90);
-            this.metroUserControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.metroUserControl1.Location = new System.Drawing.Point(213, 111);
+            this.metroUserControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroUserControl1.Name = "metroUserControl1";
-            this.metroUserControl1.Size = new System.Drawing.Size(6, 6);
+            this.metroUserControl1.Size = new System.Drawing.Size(8, 7);
             this.metroUserControl1.TabIndex = 0;
             this.metroUserControl1.UseSelectable = true;
             // 
             // label_version
             // 
             this.label_version.AutoSize = true;
-            this.label_version.Location = new System.Drawing.Point(700, 495);
-            this.label_version.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label_version.Location = new System.Drawing.Point(6, 398);
             this.label_version.Name = "label_version";
-            this.label_version.Size = new System.Drawing.Size(91, 19);
+            this.label_version.Size = new System.Drawing.Size(97, 20);
             this.label_version.TabIndex = 1;
             this.label_version.Text = "Version: 1.0.0.1";
             // 
@@ -62,9 +63,10 @@
             // 
             this.controllerStatusLabel.AutoSize = true;
             this.controllerStatusLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.controllerStatusLabel.Location = new System.Drawing.Point(4, 10);
+            this.controllerStatusLabel.Location = new System.Drawing.Point(12, 15);
+            this.controllerStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.controllerStatusLabel.Name = "controllerStatusLabel";
-            this.controllerStatusLabel.Size = new System.Drawing.Size(104, 13);
+            this.controllerStatusLabel.Size = new System.Drawing.Size(129, 17);
             this.controllerStatusLabel.TabIndex = 2;
             this.controllerStatusLabel.Text = "Controller Status";
             // 
@@ -73,61 +75,114 @@
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.statusLabel.Location = new System.Drawing.Point(4, 23);
+            this.statusLabel.Location = new System.Drawing.Point(11, 29);
+            this.statusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(71, 18);
+            this.statusLabel.Size = new System.Drawing.Size(92, 23);
             this.statusLabel.TabIndex = 3;
             this.statusLabel.Text = "OFFLINE";
             // 
-            // label1
+            // robotLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "EV3 Robot Status";
+            this.robotLabel.AutoSize = true;
+            this.robotLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.robotLabel.Location = new System.Drawing.Point(12, 80);
+            this.robotLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.robotLabel.Name = "robotLabel";
+            this.robotLabel.Size = new System.Drawing.Size(136, 17);
+            this.robotLabel.TabIndex = 5;
+            this.robotLabel.Text = "EV3 Robot Status";
             // 
-            // label2
+            // robotStatus
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(4, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 18);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "OFFLINE";
+            this.robotStatus.AutoSize = true;
+            this.robotStatus.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.robotStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.robotStatus.Location = new System.Drawing.Point(11, 97);
+            this.robotStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.robotStatus.Name = "robotStatus";
+            this.robotStatus.Size = new System.Drawing.Size(92, 23);
+            this.robotStatus.TabIndex = 6;
+            this.robotStatus.Text = "OFFLINE";
             // 
-            // WebcamVLC
+            // labelY
             // 
-            this.WebcamVLC.Enabled = true;
-            this.WebcamVLC.Location = new System.Drawing.Point(18, 114);
-            this.WebcamVLC.Name = "WebcamVLC";
-            this.WebcamVLC.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WebcamVLC.OcxState")));
-            this.WebcamVLC.Size = new System.Drawing.Size(754, 364);
-            this.WebcamVLC.TabIndex = 7;
+            this.labelY.AutoSize = true;
+            this.labelY.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelY.Location = new System.Drawing.Point(12, 227);
+            this.labelY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelY.Name = "labelY";
+            this.labelY.Size = new System.Drawing.Size(96, 17);
+            this.labelY.TabIndex = 9;
+            this.labelY.Text = "Controller Y:";
+            // 
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX.Location = new System.Drawing.Point(12, 210);
+            this.labelX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(98, 17);
+            this.labelX.TabIndex = 10;
+            this.labelX.Text = "Controller X:";
+            // 
+            // webcamStatus
+            // 
+            this.webcamStatus.AutoSize = true;
+            this.webcamStatus.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.webcamStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.webcamStatus.Location = new System.Drawing.Point(11, 159);
+            this.webcamStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.webcamStatus.Name = "webcamStatus";
+            this.webcamStatus.Size = new System.Drawing.Size(92, 23);
+            this.webcamStatus.TabIndex = 12;
+            this.webcamStatus.Text = "OFFLINE";
+            // 
+            // webcamLabel
+            // 
+            this.webcamLabel.AutoSize = true;
+            this.webcamLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.webcamLabel.Location = new System.Drawing.Point(12, 142);
+            this.webcamLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.webcamLabel.Name = "webcamLabel";
+            this.webcamLabel.Size = new System.Drawing.Size(119, 17);
+            this.webcamLabel.TabIndex = 11;
+            this.webcamLabel.Text = "Webcam Status";
+            // 
+            // startConnect
+            // 
+            this.startConnect.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startConnect.Location = new System.Drawing.Point(60, 323);
+            this.startConnect.Name = "startConnect";
+            this.startConnect.Size = new System.Drawing.Size(257, 61);
+            this.startConnect.TabIndex = 13;
+            this.startConnect.Text = "Start";
+            this.startConnect.UseVisualStyleBackColor = true;
+            this.startConnect.Click += new System.EventHandler(this.startConnect_Click);
             // 
             // DefuseUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 518);
-            this.Controls.Add(this.WebcamVLC);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(388, 432);
+            this.Controls.Add(this.startConnect);
+            this.Controls.Add(this.webcamStatus);
+            this.Controls.Add(this.webcamLabel);
+            this.Controls.Add(this.labelX);
+            this.Controls.Add(this.labelY);
+            this.Controls.Add(this.robotStatus);
+            this.Controls.Add(this.robotLabel);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.controllerStatusLabel);
             this.Controls.Add(this.label_version);
             this.Controls.Add(this.metroUserControl1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DefuseUI";
-            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(20, 74, 20, 20);
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.TopMost = true;
             this.Load += new System.EventHandler(this.DefuseUI_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.WebcamVLC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,10 +194,14 @@
         private MetroFramework.Controls.MetroLabel label_version;
         private System.Windows.Forms.Label controllerStatusLabel;
         private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label robotLabel;
+        private System.Windows.Forms.Label robotStatus;
         private AxAXVLC.AxVLCPlugin2 VLC;
-        private AxAXVLC.AxVLCPlugin2 WebcamVLC;
+        private System.Windows.Forms.Label labelY;
+        private System.Windows.Forms.Label labelX;
+        private System.Windows.Forms.Label webcamStatus;
+        private System.Windows.Forms.Label webcamLabel;
+        private System.Windows.Forms.Button startConnect;
     }
 }
 
