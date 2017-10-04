@@ -1,4 +1,5 @@
 ﻿using SharpDX.XInput;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -29,22 +30,30 @@ namespace Defuse_IT.XInput
                 }
             }     
         }
-        public void getState()
+        internal void getState(object sender, DoWorkEventArgs e)
         {
             //Get Previous State
             var previousState = controller.GetState();
+            EV3.EV3Connection tcp = new EV3.EV3Connection();
+            tcp.initConnection(1337);
             
+
             //Do This:
             while (controller.IsConnected && listenToController)
             {
                 var state = controller.GetState();
-                if (previousState.PacketNumber != state.PacketNumber)
+                if (previousState.PacketNumber != state.PacketNumber && !state.Gamepad.Buttons.ToString().Contains("None"))
                 {
-                    MessageBox.Show(state.Gamepad.ToString());
-                    Thread.Sleep(30);
+                    tcp.sendOutput(state.Gamepad.Buttons.ToString());
                 }
 
-                previousState = state;
+                if (previousState.PacketNumber != state.PacketNumber)
+                {
+                    tcp.sendOutput(state.Gamepad.LeftThumbX.ToString());
+                    tcp.sendOutput(state.Gamepad.LeftThumbY.ToString());
+                    tcp.sendOutput(state.Gamepad.RightTrigger.ToString());
+                }
+
             }
         }
 

@@ -2,36 +2,56 @@
 using MetroFramework.Forms;
 using System;
 using System.ComponentModel;
-using System.Net;
+using System.Collections;
+using System.Linq;
 using System.Net.NetworkInformation;
-using System.Threading;
 using System.Timers;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Defuse_IT
 {
 
-    
+
     public partial class DefuseUI : MetroForm
     {
-
         internal bool EV3Alive;
         XInputController con = new XInputController();
+        EV3.EV3Connection tcpcon = new EV3.EV3Connection();
+
+
         public DefuseUI()
         {
+
+            //Init UI
             InitializeComponent();
+
+            //Init Controller
             con.getController();
+
+            //Init TCP Client
             statusController();
+
+            //Check if EV3 status
             statusEV3();
+
+            //TCP Connection
+            statusTCP();
+
         }
 
-
-
-        void addVLC()
+        void statusTCP()
         {
+            tcpcon.initConnection(1337);
+            if (tcpcon.socketClient.Connected)
+            {
+                tcpStatus.Text = "ONLINE";
+                tcpStatus.ForeColor = System.Drawing.Color.Green;
+            }
         }
 
-        void statusEV3()
+        //Ping EV3 to check if its online
+        internal void statusEV3()
         {
             Ping sendping = new Ping();
             var reply = sendping.Send(Properties.Settings.Default.IPAdress);
@@ -43,10 +63,10 @@ namespace Defuse_IT
                 robotStatus.ForeColor = System.Drawing.Color.Green;
 
             }
-
         }
 
-        void statusController()
+        //Check Controller Status
+        internal void statusController()
         {
             if (con.IsConnected)
             {
@@ -55,21 +75,31 @@ namespace Defuse_IT
             }
         }
 
+        //Load with UI
         void DefuseUI_Load(object sender, EventArgs e)
         {
         
 
         }
 
-        void WebcamVLC_Enter(object sender, EventArgs e)
-        {
 
-        }
-
+        //Start Connection with Controller
         private void startConnect_Click(object sender, EventArgs e)
         {
-            con.getState();
+            BackgroundWorker worker_1 = new BackgroundWorker();
             con.listenToController = true;
+            worker_1.DoWork += con.getState;
+            worker_1.RunWorkerAsync();
+        }
+
+        private void tcpButton_Click(object sender, EventArgs e)
+        {
+            tcpcon.initConnection(1337);
+        }
+
+        private void sendTest_Click(object sender, EventArgs e)
+        {
+            tcpcon.sendOutput("["+System.DateTime.Now + "]" + " Message: Test");
         }
     }
 }
