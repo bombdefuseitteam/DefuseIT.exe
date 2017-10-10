@@ -1,46 +1,35 @@
 ﻿using Defuse_IT.XInput;
+
 using MetroFramework.Forms;
 using System;
 using System.ComponentModel;
-using System.Collections;
-using System.Linq;
 using System.Net.NetworkInformation;
-using System.Timers;
-using System.Collections.Generic;
-using System.Windows.Forms;
+
 
 namespace Defuse_IT
 {
-
-
     public partial class DefuseUI : MetroForm
     {
         internal bool EV3Alive;
         XInputController con = new XInputController();
-        EV3.EV3Connection tcpcon = new EV3.EV3Connection();
+        EV3Connection tcpcon = new EV3Connection();
 
 
         public DefuseUI()
         {
-
             //Init UI
             InitializeComponent();
-
             //Init Controller
             con.getController();
-
             //Init TCP Client
             statusController();
-
             //Check if EV3 status
             statusEV3();
-
             //TCP Connection
-            statusTCP();
-
+            StatusTCP();
         }
 
-        void statusTCP()
+        void StatusTCP()
         {
             tcpcon.initConnection(1337);
             if (tcpcon.socketClient.Connected)
