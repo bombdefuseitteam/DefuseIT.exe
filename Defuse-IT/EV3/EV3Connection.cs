@@ -9,6 +9,7 @@ namespace Defuse_IT.EV3
     {
         //TCP Socket Client
         internal TcpClient socketClient = new TcpClient();
+        internal string returnData;
 
         internal void initConnection(int port)
         {
@@ -39,9 +40,9 @@ namespace Defuse_IT.EV3
         internal void readInput()
         {
             NetworkStream serverStream = socketClient.GetStream();
-            byte[] inStream = new byte[10025];
+            byte[] inStream = new byte[1024];
             serverStream.Read(inStream, 0, socketClient.ReceiveBufferSize);
-            string returndata = Encoding.ASCII.GetString(inStream);
+            returnData = Encoding.ASCII.GetString(inStream);
         }
     }
 }
