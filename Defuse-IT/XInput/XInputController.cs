@@ -35,9 +35,12 @@ namespace Defuse_IT.XInput
         {
             EV3Connection tcp = new EV3Connection();
             tcp.initConnection(1337);
-            while (true)
+
+            tcp.sendOutput("[DefuseIT-UI] mode = RECEIVING");
+
+            while (tcp.socketClient.Connected)
             {
-                tcp.sendOutput("[DefuseIT-UI] mode = RECEIVING");
+
                 byte[] inStream = new byte[10025];
 
                 NetworkStream serverStream = tcp.socketClient.GetStream();
@@ -72,7 +75,7 @@ namespace Defuse_IT.XInput
             tcp.initConnection(1337);
             tcp.sendOutput("[DefuseIT-UI] mode = SENDING");
 
-            while (_controller.IsConnected && ListenToController)
+            while (_controller.IsConnected && tcp.socketClient.Connected)
             {
                 var state = _controller.GetState();
                 var cState = state.Gamepad;
