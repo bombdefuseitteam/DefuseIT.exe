@@ -1,15 +1,19 @@
 ﻿
+using System.Management.Instrumentation;
 using System.Text;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using Defuse_IT.XInput;
 
 namespace Defuse_IT.EV3
 {
-    class EV3Connection
+    internal class EV3Connection
     {
         //TCP Socket Client
         internal TcpClient socketClient = new TcpClient();
+        XInputController con = new XInputController();
         internal string returnData;
+
 
         internal void initConnection(int port)
         {
@@ -32,17 +36,10 @@ namespace Defuse_IT.EV3
         {
             NetworkStream serverStream = socketClient.GetStream();
             byte[] outStream = Encoding.ASCII.GetBytes(output);
+
             serverStream.Write(outStream, 0, outStream.Length);
-
+            serverStream.Flush();
         }
 
-        //Read stream from Socket Server
-        internal void readInput()
-        {
-            NetworkStream serverStream = socketClient.GetStream();
-            byte[] inStream = new byte[1024];
-            serverStream.Read(inStream, 0, socketClient.ReceiveBufferSize);
-            returnData = Encoding.ASCII.GetString(inStream);
-        }
     }
 }

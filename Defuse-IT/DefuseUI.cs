@@ -20,7 +20,7 @@ namespace Defuse_IT
             //Init UI
             InitializeComponent();
             //Init Controller
-            con.getController();
+            con.GetController();
             //Init TCP Client
             statusController();
             //Check if EV3 status
@@ -75,15 +75,8 @@ namespace Defuse_IT
         //Start Connection with Controller
         private void startConnect_Click(object sender, EventArgs e)
         {
-            BackgroundWorker worker_1 = new BackgroundWorker();
-            con.listenToController = true;
-            worker_1.DoWork += con.getState;
-            worker_1.RunWorkerAsync();
-        }
-
-        private void tcpButton_Click(object sender, EventArgs e)
-        {
-            tcpcon.initConnection(1337);
+            con.StartController();
+            con.StartListener();
         }
 
         private void sendTest_Click(object sender, EventArgs e)
